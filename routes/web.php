@@ -15,12 +15,13 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
-Route::get('getToken', ['as' => 'welcome' , 'uses' => 'GraphController@checkFile']);
+Route::get('getToken', ['as' => 'welcome' , 'uses' => 'GraphController@createSubscriptionCurl']);
 
 
-Route::any('success', ['as' => 'getValidationToken', 'uses' => 'GraphController@getToken' 
-]);
-
+Route::any('success', function () {
+    return response('Hello World', 200)
+                  ->header('Content-Type', 'text/plain');
+});
 
 
 
